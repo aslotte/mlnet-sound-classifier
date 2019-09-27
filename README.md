@@ -22,6 +22,17 @@ Below is an example in which we've transformed an audio file of a guitar playing
 The spectrograms where generated using the open-source library Spectrogram.NET.
 Once we have our images, we can then train our deep neural network with ML.NET.
 
+```
+var pipeline = mlContext.Transforms.Conversion.MapValueToKey(outputColumnName: "LabelAsKey", 
+                                                                            inputColumnName: "Label",
+                                                                            keyOrdinality: ValueToKeyMappingEstimator.KeyOrdinality.ByValue)
+                        .Append(mlContext.Model.ImageClassification("ImagePath", "LabelAsKey",
+                                        arch: ImageClassificationEstimator.Architecture.InceptionV3,
+                                        epoch: 200,                     
+                                        metricsCallback: (metrics) => Console.WriteLine(metrics),
+                                        validationSet: transformedValidationDataView));
+```
+
 #### Result
 The model currently only yields a 75% accuracy on the validation dataset, which under the circumstances is pretty good.
 The accuracy can most likely be improved by increasing the size of the dataset used for training, or augmenting the spectrograms further by e.g. trasforming then to mel-spectrograms, which will provide even more detail.
