@@ -11,8 +11,9 @@ In this repo we'll demonstrate how to build a rudimentary sound classifier using
 To be able to classify sounds using a CNN, we first need to create an image of the audio.
 To do this, we can create something called an audio spectrogram, which is visual presentation of the energy levels of a sound clip.
 
-Below are spectrograms of guitars playing
+Below is an example in which we've transformed an audio file of a guitar playing to a spectrogram.
+
 ![guitar](https://github.com/aslotte/mlnet-sound-classifier/blob/master/images/acoustic_guitar_23-spectro.jpg)
-![guitar](https://github.com/aslotte/mlnet-sound-classifier/blob/master/images/acoustic_guitar_26-spectro.jpg)
+
 
 #### Result
